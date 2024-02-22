@@ -1,0 +1,142 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.background{
+    padding: 30px 90px;
+    background-color: #1A2027;
+}
+.header{
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+.header h1{
+    color: white;
+    margin-right: 120px;
+}
+.header .button-header p{
+    color: #717273;
+    display: inline-block;
+    margin-right: 40px;
+}
+.search{
+    margin-left: auto;
+    width: 15%;
+}
+.search input{
+    width: 100%;
+    padding: 8px 15px;
+    border-radius: 100px;
+    background-color: #374051;
+    color: #717273;
+    border: none;
+    font-size: 15px;
+}
+.search input:focus{
+    border: none;
+    outline: none;
+}
+.body{
+    padding: 0 40px;
+}
+.New-Release, .explore{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.New-Release h1, .explore h1{
+    color: white;
+}
+.anime-list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+.anime-list .anime{
+    margin-top: 20px;
+    width: 15%;
+    cursor: pointer;
+    color: #1A2027;
+}
+.anime img{
+    width: 100%;
+    height: 320px;
+    border-radius: 15px;
+}
+
+.anime .mask {
+    position: relative;
+}
+
+.anime .mask::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to top, #0F1E29, transparent);
+    border-radius: 15px;
+}
+
+.anime .mask .ep{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    z-index: 10;
+    color: white;
+}
+
+.anime h4{
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+.explore h2{
+    color: #717273;
+    font-weight: 10px;
+    margin-top: 10px;
+}
+.explore .detail-anime{
+    width: 100%;
+}
+.explore .detail-anime .mask{
+    margin-top: 30px;
+    position: relative;
+    width: 1240px;
+    height: 400px;
+    overflow: hidden;
+}
+.explore .detail-anime .mask::after{
+    position: absolute;
+    content: '';
+    inset: 0;
+    background: linear-gradient(269.96deg, rgba(29, 29, 29, 0) 0.04%, rgba(29, 29, 29, 0.8) 99.5%);
+
+}
+.explore .detail-anime img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.explore .detail-anime .info-anime{
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+}
+.detail-anime .info-anime h1{
+    position: relative;
+    color: white;
+    z-index: 10;
+    margin-bottom: 30px;
+}
+.detail-anime .info-anime p{
+    font-size: 16px;
+    color: white;
+    position: relative;
+    z-index: 10;
+    width: 60%;
+    letter-spacing: 1px;
+    line-height: 20px;
+}
