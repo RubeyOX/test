@@ -14,23 +14,30 @@ const Middleware = {
     }
     next();
   }, checkId: async (req, res, next) => {
-    const { userId, content } = req.body;
+    const { content } = req.body;
     const { apiKey } = req.query;
-    if (!apiKey) {
-      return res.status(400).send({ message: "API key is required!" });
-    }
+
+    if (!apiKey) return res.status(400).send({ message: "API key is required!" });
+
     try {
+      const apiKeyParts = apiKey.split('$');
+      if (apiKeyParts.length !== 4) return res.status(400).send({ message: "Invalid API key format!" });
+
+      const [prefix, userIdFromKey, emailFromKey] = apiKeyParts;
+      if (prefix !== "mern") return res.status(400).send({ message: "Invalid API key prefix!" });
       const existUser = await UserModel.findOne({
-        _id: userId
+        _id: userIdFromKey,
+        email: emailFromKey
       });
 
-      if (!existUser) {
-        return res.status(400).send({ message: "User not found or invalid API key!" });
-      }
+      if (!existUser) return res.status(400).send({ message: "User not found or invalid API key!" });
       req.newPost = new PostModel({
         userId: existUser._id,
-        content
+        content,
+        createAt: new Date().toISOString(),
+        updateAt: new Date().toISOString()
       });
+
       next();
     } catch (error) {
       res.status(500).send({ message: 'Server error' });
